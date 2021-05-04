@@ -19,8 +19,11 @@ public class Main {
         System.out.println("cashSum = " + cashSum);
         System.out.println("totalAsset = " + totalAsset);
 
-        Thread cathieWoodThread = new Thread(new CathieWood((Stock) asset[0], (Cash) asset[1]));
-        Thread michealBurryThread = new Thread(new MichaelBurry((Stock) asset[0], (Cash) asset[1]));
+        Thread cathieWoodThread = new Thread(new Trader());
+        Thread michealBurryThread = new Thread(new Trader());
+
+        cathieWoodThread.cathieWood((Stock) asset[0], (Cash) asset[1]);
+        michealBurryThread.michaelBurry((Stock) asset[0], (Cash) asset[1]);
 
         cathieWoodThread.start();
         michealBurryThread.start();
