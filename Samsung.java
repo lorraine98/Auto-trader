@@ -1,10 +1,19 @@
 public class Samsung extends Stock {
     private int price = 80000;
-    private int count = 15;
+    private int count;
 
-    public int sell(int n){
-        count = count-n;
-        return count;
+    public Samsung(int userCount) {
+        count = userCount;
+    }
+
+    @Override
+    public int buy(int n) {
+        return count += n;
+    }
+
+    @Override
+    public int sell(int n) {
+        return count -= n;
     }
 
     @Override
@@ -24,7 +33,7 @@ public class Samsung extends Stock {
 
     @Override
     public void printInfo() {
-        System.out
-                .println(String.format("name = Samsung, price = %d, count = %d, total = %d", price, count, price * count));
+        System.out.println(
+                String.format("name = Samsung, price = %d, count = %d, total = %d", price, count, price * count));
     }
 }

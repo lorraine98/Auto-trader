@@ -1,9 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        Seller seller = new Seller();
-        Buyer buyer = new Buyer();
-        Thread thread = new Thread();
-        Asset[] asset = new Asset[] { new Samsung(), new KRW() };
+        Asset[] asset = new Asset[] { new Samsung(20), new KRW(1600000) };
 
         int totalAsset = 0;
         int stockSum = 0;
@@ -17,19 +14,16 @@ public class Main {
             }
             asset[i].printInfo();
         }
-        
-        seller.run();
-        buyer.run();
-
-        seller.sell(asset);
-
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
-        }
 
         System.out.println("stockSum = " + stockSum);
         System.out.println("cashSum = " + cashSum);
         System.out.println("totalAsset = " + totalAsset);
+
+        Thread cathieWoodThread = new Thread(new CathieWood((Stock) asset[0], (Cash) asset[1]));
+        Thread michealBurryThread = new Thread(new MichaelBurry((Stock) asset[0], (Cash) asset[1]));
+
+        cathieWoodThread.start();
+        michealBurryThread.start();
+
     }
 }

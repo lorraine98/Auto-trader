@@ -1,6 +1,20 @@
 public class KRW extends Cash {
     private int price = 1;
-    private int count = 1000000;
+    private int count;
+
+    public KRW(int userCount) {
+        count = userCount;
+    }
+
+    @Override
+    public int buy(int n) {
+        return count += n;
+    }
+
+    @Override
+    public int sell(int n) {
+        return count -= n;
+    }
 
     @Override
     public int getCount() {
@@ -15,11 +29,6 @@ public class KRW extends Cash {
     @Override
     public int getTotalValue() {
         return price * count;
-    }
-
-    public int buyStock(int n){
-        int charge = getTotalValue()-80000*n;
-        return charge;
     }
 
     @Override
