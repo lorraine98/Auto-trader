@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        Asset[] asset = new Asset[] { new Samsung(20), new KRW(1600000) };
+        Asset[] asset = new Asset[] { new Samsung(80), new KRW(6400000) };
 
         int totalAsset = 0;
         int stockSum = 0;
@@ -18,15 +18,12 @@ public class Main {
         System.out.println("stockSum = " + stockSum);
         System.out.println("cashSum = " + cashSum);
         System.out.println("totalAsset = " + totalAsset);
+        GoldmanSachs goldmanSachs = new GoldmanSachs();
+        Thread buyerThread = new Thread(new Trader((Stock) asset[0], (Cash) asset[1], goldmanSachs, true));
+        Thread sellerThread = new Thread(new Trader((Stock) asset[0], (Cash) asset[1], goldmanSachs, false));
 
-        Thread cathieWoodThread = new Thread(new Trader());
-        Thread michealBurryThread = new Thread(new Trader());
-
-        cathieWoodThread.cathieWood((Stock) asset[0], (Cash) asset[1]);
-        michealBurryThread.michaelBurry((Stock) asset[0], (Cash) asset[1]);
-
-        cathieWoodThread.start();
-        michealBurryThread.start();
+        buyerThread.start();
+        sellerThread.start();
 
     }
 }
