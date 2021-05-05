@@ -7,12 +7,12 @@ public class KRW extends Cash {
     }
 
     @Override
-    public int buy(int n) {
+    public int add(int n) {
         return count += n;
     }
 
     @Override
-    public int sell(int n) {
+    public int substract(int n) {
         return count -= n;
     }
 

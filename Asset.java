@@ -8,7 +8,7 @@ public abstract class Asset {
 
     public abstract void printInfo();
 
-    public abstract int buy(int n);
+    public abstract int add(int n);
 
-    public abstract int sell(int n);
+    public abstract int substract(int n);
 }
